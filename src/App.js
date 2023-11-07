@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Navbar from './components/Navbar';
+import CreateUser from "./components/CreateUser";
+import UserList from "./components/UserList";
+import Home from './components/Home';
+import UpdateUser from './components/UpdateUser';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HashRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/createUser' element={<CreateUser />} />
+          <Route path='/userList' element={<UserList />} />
+          <Route path='/updateUser/:id' element={<UpdateUser />} />
+        </Routes>
+      </HashRouter>
     </div>
   );
 }
